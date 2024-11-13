@@ -1,0 +1,51 @@
+Orden del proyecto hasta ahora:
+- backend (carpeta)
+    - config (carpeta)
+        - db.js
+    - controllers (carpeta)
+        - clienteController.js
+        - pedidoController.js
+    - models (carpeta)
+        - Cliente.js
+        - Pedido.js
+        - Producto.js
+        - Recorrido.js
+        - User.js
+    - node_modules (carpeta)
+        - (archivos de dependencias de Node.js)
+    - routes (carpeta)
+        - clientes.js
+        - pedidos.js
+        - productos.js
+        - recorridos.js
+        - users.js
+    - package-lock.json
+    - package.json
+    - server.js
+
+- css (carpeta)
+    - estilos.css
+    - styles.css
+
+- dashboard (carpeta)
+    - index.html
+
+- images (carpeta)
+    - (imágenes utilizadas en la landing page)
+
+- js (carpeta)
+    - app.js
+    - scripts.js
+    - pedidosGuardados.js
+    - recorridos.js
+    - contact.js
+
+- Login (carpeta)
+    - estilo.css
+    - index.html
+    - script.js
+
+- Ezevem.ico (icono)
+- Ezevem.jpg (imagen utilizada para la landing page)
+- index.html (landing page)
+- Base de datos.sql

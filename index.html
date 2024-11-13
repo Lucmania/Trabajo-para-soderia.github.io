@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Lucas Costamagna">
+    <meta name="description" content="Landing Page">
+    <title>Ezevem</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="icon" href="images/Ezevem.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Contenedor Header -->
+    <header id="linkHome">
+        <nav id="navFixed" class="navbar fixed-top navbar-expand-lg navbar-light bg-light p-10px">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link scroll current" href="#linkHome">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll" href="#linkFeatures">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll" href="#linkAbout">Sobre nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll" href="#linkContacto">Contacto</a>
+                    </li>
+                </ul>
+        
+                <!-- Botón Administrador -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login/index.html">Administrador</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="boxHeader">
+            <div class="textosHeader">
+                <h1><b>¡<u>Bienvenido a Ezevem</u>!</b></h1>
+                <p>Estamos encantados de que nos elijas para disfrutar de las mejores bebidas frescas.</p>
+                <p>¡Tu sed es nuestra prioridad y nuestro compromiso!</p>
+            </div>
+
+            <div class="imgHeader">
+                <img src="images/Ezevem logo.JPG" alt="">
+            </div>
+        </div>
+    </header>
+    <!-- Fin Contenedor Header -->
+
+    <!-- Contenedor Main -->
+    <main>
+        <a id="subir" class="icon-arrow-up scroll" href="#linkHome">
+            <img src="images/punta-de-flecha-hacia-arriba.png" alt="">
+        </a>
+        <!-- Sección Features -->
+        <section class="boxFeatures" id="linkFeatures">
+            <h3>Nuestra actividad diaria</h3>
+
+            <div class="features">
+                <div class="cardFeatures">
+                    <span class="icon-refresh">1</span>
+                    <h4>Ruta Planificada</h4>
+                    <p>Comenzamos nuestro día planificando la ruta de entrega según los clientes que tengamos
+                        registrados para el día, permitiendo a todos nuestros clientes que reciban lo que soliciten de
+                        manera eficiente y puntual.</p>
+                </div>
+
+                <div class="cardFeatures">
+                    <span class="icon-refresh">2</span>
+                    <h4>Carga del Camión</h4>
+                    <p>Una vez planificada la ruta, cargamos nuestro camión con las cantidades necesarias de bidones de
+                        agua y sodas para satisfacer las necesidades de cada cliente en nuestro recorrido.</p>
+                </div>
+
+                <div class="cardFeatures">
+                    <span class="icon-refresh">3</span>
+                    <h4>Entrega Personalizada</h4>
+                    <p>Visitamos cada hogar o negocio en nuestra ruta, entregando el agua y/o soda de acuerdo a las
+                        preferencias de cada cliente y asegurándonos de brindar un servicio personalizado.</p>
+                </div>
+
+                <div class="cardFeatures">
+                    <span class="icon-refresh">4</span>
+                    <h4>Atención al Cliente</h4>
+                    <p>Estamos disponibles durante todo el día para atender cualquier consulta o solicitud especial por
+                        parte de nuestros clientes, brindando un servicio de atención al cliente de calidad.</p>
+                </div>
+
+                <div class="cardFeatures">
+                    <span class="icon-refresh">5</span>
+                    <h4>Mantenimiento del Equipo</h4>
+                    <p>Después de completar nuestras entregas, realizamos el mantenimiento necesario en nuestro equipo y
+                        vehículos para garantizar su buen funcionamiento y seguridad para futuras jornadas de trabajo.
+                    </p>
+                </div>
+
+                <div class="cardFeatures">
+                    <span class="icon-refresh">6</span>
+                    <h4>Registro y Reporte</h4>
+                    <p>Al finalizar el día, registramos todas las entregas realizadas y generamos informes detallados
+                        para mantener un registro preciso de nuestro trabajo diario y planificar futuras rutas con mayor
+                        eficiencia.</p>
+                </div>
+            </div>
+
+        </section>
+        <!-- Fin Sección Features -->
+
+        <!-- Sección Call To Actions -->
+        <section class="boxCallToActions">
+            <div class="callToActions">
+                <article class="contenido">
+                    <h3>Servicios que Ofrecemos</h3>
+                    <p>En Ezevem nos dedicamos a brindar un servicio de entrega de agua y soda de calidad y confianza.
+                        Nuestros servicios están diseñados para asegurar que cada cliente reciba agua fresca y pura
+                        directamente en su hogar o negocio, con atención personalizada y eficiencia garantizada.</p>
+                    <dt>
+                        <li><span class="icon-check"></span> Entrega diaria de agua embotellada a domicilio.</li>
+                        <li><span class="icon-check"></span> Atención personalizada: nos adaptamos a las preferencias y
+                            necesidades de cada cliente.</li>
+                        <li><span class="icon-check"></span> Reposición automática: servicio de programación para
+                            garantizar que nunca falte agua en su hogar o negocio.</li>
+                        <li><span class="icon-check"></span> Mantenimiento preventivo: aseguramos la calidad de nuestro
+                            servicio mediante el mantenimiento regular de nuestros equipos.</li>
+                        <li><span class="icon-check"></span> Facturación clara y transparente: ofrecemos un sistema de
+                            facturación detallado para su comodidad y control.</li>
+                        <li><span class="icon-check"></span> Soporte al cliente: estamos disponibles para resolver
+                            cualquier duda o inquietud que pueda surgir.</li>
+                    </dt>
+                </article>
+                <div class="imgCallToActions">
+                    <img src="images/Soda.png" alt="Soda">
+                    <img src="images/Bidon.png" alt="Bidon">
+                </div>
+            </div>
+        </section>
+        <!-- Fin Sección Call To Actions -->
+
+        <!-- Sección About -->
+        <section class="boxAbout" id="linkAbout">
+            <h3><u>Un poco de nuestra historia</u>:</h3>
+            <div class="about">
+                <div class="imgAbout">
+                    <img src="images/Galpon.JPG" alt="Local">
+                    <img src="images/Camioneta.png" alt="camioneta">
+                </div>
+                <article class="contenidoAbout">
+                    <p>Nuestras raíces nacen desde 1978, donde nuestra familia adquirió el negocio y continuamos la
+                        venta de sodas con sifón de vidrio, una práctica arraigada en la zona. Nuestro enfoque siempre
+                        fue mantenerse como un negocio familiar, centrado en la venta directa a hogares y ocasionalmente
+                        a empresas. Inicialmente, además de sodas, ofrecíamos artículos de limpieza, vino y gas,
+                        expandiendo nuestra oferta para generar que nuestro comienzo nos dieran las suficientes
+                        ganancias para poder comenzar con la venta de bidones de agua y hielo para satisfacer las
+                        necesidades de la comunidad más actualez, y a su vez sumando la venta de las sodas en
+                        contenedores plásticos.</p>
+                </article>
+            </div>
+        </section>
+        <!-- Fin Sección About -->
+
+        <!-- Sección Contacto -->
+        <section class="boxContacto" id="linkContacto">
+            <h3><u>Ponte en contacto:</u></h3>
+            <div class="container contacto">
+                <form id="miForm">
+                    <div class="form-group">
+                        <label for="inputName"><b>Nombre</b></label>
+                        <input type="text" class="form-control" id="inputName" name="name" placeholder="Nombre..."
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastName"><b>Apellido</b></label>
+                        <input type="text" class="form-control" id="inputLastName" name="lastName"
+                            placeholder="Apellido..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail"><b>Email</b> <em>(de preferencia para su contacto)</em></label>
+                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email..."
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject"><b>Asunto</b></label>
+                        <input type="text" class="form-control" id="inputSubject" name="subject" placeholder="Asunto..."
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><b>Mensaje</b></label>
+                        <textarea class="form-control" rows="5" id="message" name="message" placeholder="Mensaje..."
+                            required></textarea>
+                    </div>
+                    <button type="button" class="botonEnviarMensaje" id="submitBtn">Enviar</button>
+                </form>
+            </div>
+        </section>
+        <!-- Fin Sección Contacto -->
+    </main>
+    <!-- Fin Contenedor Main -->
+
+    <!-- Contenedor Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- MAPA -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3368.5046730024396!2d-63.22973852498998!3d-32.40563714476823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cc42c005df9e6b%3A0x41f662acf8618f11!2sMendoza%202358%2C%20Villa%20Mar%C3%ADa%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1717759005001!5m2!1ses-419!2sar"
+                        width="85%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <!-- INFO -->
+                    <div class="contact-info">
+                        <h4>Habla con nosotros!</h4>
+                        <p>Número de teléfono: +54 9 353 419-3616</p>
+                        <p>Gmail de soporte: costamagnalucas27@gmail.com</p>
+                        <p>@Copyright. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Fin Contenedor Footer -->
+
+    <!-- Scripts Adicionales -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Fin Scripts Adicionales -->
+
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Entregas</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../images/Marca logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <img src="../images/Marca.png" alt="Marca" class="sidebar-logo">
+        </div>
+        <button onclick="showSection('clientes')">Clientes</button>
+        <button onclick="showSection('deshabilitados')">Clientes Deshabilitados</button>
+        <button onclick="showSection('pedidos')">Pedidos</button>
+        <button onclick="showSection('pedidosGuardados')" id="btnPedidosGuardados">Pedidos Guardados</button>
+        <button onclick="showSection('productos')">Productos</button>
+        <button onclick="showSection('recorridos')">Gestión de Recorridos</button>
+        <button onclick="location.href='../index.html'" class="volver-web">Volver a la web</button>
+    </div>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()">☰</div>
+
+    <div class="content">
+        <!-- Sección de Clientes -->
+        <div id="clientes" class="section">
+            <h2>Clientes</h2>
+            <form id="clienteForm">
+                <input type="hidden" id="clienteIndex">
+                <label>Nombre y Apellido: <input type="text" id="nombreApellido" required></label>
+                <label>Número Telefónico: <input type="tel" id="telefono" required></label>
+                <label>Email: <input type="email" id="email" required></label>
+                <label>Ciudad:
+                    <select id="ciudad" required>
+                        <option value="Villa María">Villa María</option>
+                        <option value="Villa Nueva">Villa Nueva</option>
+                    </select>
+                </label>
+                <label>Barrio: <input type="text" id="barrio" required></label>
+                <label>Calle y Altura: <input type="text" id="calleAltura" required></label>
+                <label>Piso: <em>(Opcional)</em><input type="text" id="piso"></label>
+                <label>Departamento: <em>(Opcional)</em><input type="text" id="departamento"></label>
+                <button type="submit">Guardar Cliente</button>
+                <button type="button" id="actualizarClientes" onclick="cargarClientes()">Cargar Clientes</button>
+            </form>
+            <div id="clientesList"></div>
+        </div>
+
+        <!-- Sección de Clientes Deshabilitados -->
+        <div id="deshabilitados" class="section" style="display:none;">
+            <h2>Clientes Deshabilitados</h2>
+            <div id="deshabilitadosList"></div>
+        </div>
+
+        <!-- Sección de Pedidos -->
+        <div id="pedidos" class="section" style="display:none;">
+            <h2>Pedidos</h2>
+            <form id="pedidoForm">
+                <input type="hidden" id="pedidoIndex">
+                <div class="pedido-section">
+                    <h3>Información del Cliente</h3>
+                    <label>Cliente:
+                        <select id="clienteSelect" required></select>
+                    </label>
+                </div>
+
+                <div class="pedido-section">
+                    <h3>Productos</h3>
+                    <div id="productosPedido"></div> <!-- Este div se llenará con checkboxes -->
+                </div>
+
+                <div class="pedido-section">
+                    <h3>Tipo de Pedido</h3>
+                    <label>Tipo de Pedido:
+                        <select id="tipoPedido" required onchange="toggleFechaDias()">
+                            <option value="" disabled selected>Seleccione un tipo de pedido</option>
+                            <option value="especifico">Específico</option>
+                            <option value="recurrente">Recurrente</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!-- Sección para pedidos específicos -->
+                <div id="fechaEspecifica" class="pedido-section" style="display:none;">
+                    <h3>Fecha y Hora de Entrega</h3>
+                    <label>Fecha Solicitada:
+                        <input type="date" id="fechaSolicitada">
+                    </label>
+                    <label>Hora de Entrega:
+                        <p>Desde</p>
+                        <input type="time" id="horaInicio">
+                        <p>Hasta <em>(Opcional)</em></p>
+                        <input type="time" id="horaFin">
+                    </label>
+                </div>
+
+                <!-- Sección para pedidos recurrentes -->
+                <div id="diasRecurrentes" class="pedido-section" style="display:none;">
+                    <h3>Días y Horario de Entrega Recurrente</h3>
+                    <label>Días de Entrega:</label>
+                    <div class="dias-select">
+                        <label><input type="checkbox" value="lunes"> Lunes</label>
+                        <label><input type="checkbox" value="martes"> Martes</label>
+                        <label><input type="checkbox" value="miercoles"> Miércoles</label>
+                        <label><input type="checkbox" value="jueves"> Jueves</label>
+                        <label><input type="checkbox" value="viernes"> Viernes</label>
+                        <label><input type="checkbox" value="sabado"> Sábado</label>
+                        <label><input type="checkbox" value="domingo"> Domingo</label>
+                    </div>
+                    <label>Horario de Entrega:
+                        <p>Desde</p>
+                        <input type="time" id="horaInicioRecurrente">
+                        <p>Hasta <em>(Opcional)</em></p>
+                        <input type="time" id="horaFinRecurrente">
+                    </label>
+                </div>
+
+                <div class="pedido-section">
+                    <button type="submit">Guardar Pedido</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sección de Productos -->
+        <div id="productos" class="section" style="display:none;">
+            <h2>Gestión de Productos</h2>
+            <form id="productoForm">
+                <input type="hidden" id="productoIndex"> <!-- Campo oculto para el índice del producto -->
+                <label>Nombre del Producto <span class="req">*</span></label>
+                <input type="text" id="nombreProducto" required>
+
+                <label>Precio <span class="req">*</span></label>
+                <input type="number" id="precioProducto" min="0" step="0.01" required>
+
+                <label>Descripción</label>
+                <input type="text" id="descripcionProducto">
+
+                <button type="submit">Guardar Producto</button>
+                <button type="button" id="actualizarProductosBtn" class="cargar-productos"
+                    onclick="cargarProductos()">Cargar Productos</button>
+            </form>
+
+            <h3>Lista de Productos</h3>
+            <div id="productosList"></div>
+        </div>
+
+        <!-- Sección para pedidos guardados -->
+        <div id="pedidosGuardados" class="section" style="display:none;">
+            <h2>Pedidos Pendientes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Dirección</th>
+                        <th>Fecha/Días</th>
+                        <th>Horario</th>
+                        <th>Productos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="recorridosTableBodyHoy"></tbody>
+            </table>
+
+            <h2>Pedidos Recurrentes para Días Siguientes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Dirección</th>
+                        <th>Días Recurrentes</th>
+                        <th>Horario</th>
+                        <th>Productos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="recorridosTableBodyRecurrentesFuturos"></tbody>
+            </table>
+
+            <h2>Historial de Pedidos Realizados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Dirección</th>
+                        <th>Fecha/Días</th>
+                        <th>Horario</th>
+                        <th>Productos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="recorridosTableBodyRealizados"></tbody>
+            </table>
+        </div>
+
+        <!-- Sección de Gestión de Recorridos -->
+        <div id="recorridos" class="section" style="display:none;">
+            <h2>Gestión de Recorridos</h2>
+
+            <div class="filters-container">
+                <div class="filters">
+                    <label>Filtrar por Barrio:
+                        <select id="filterBarrio">
+                            <option value="">Todos los Barrios</option>
+                        </select>
+                    </label>
+                    <button onclick="filtrarPedidos()">Filtrar</button>
+                </div>
+            </div>
+
+            <div class="recorridos-container">
+                <div class="pedidos-list">
+                    <h3>Pedidos Disponibles</h3>
+                    <table id="tablaPedidosDisponibles">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Dirección</th>
+                                <th>Barrio</th>
+                                <th>Productos</th>
+                                <th>Horario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidosDisponibles">
+                            <!-- Los pedidos se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recorrido-actual">
+                    <h3>Recorrido Organizado</h3>
+                    <table id="tablaRecorridoOrganizado">
+                        <thead>
+                            <tr>
+                                <th>Orden</th>
+                                <th>Cliente</th>
+                                <th>Dirección</th>
+                                <th>Barrio</th>
+                                <th>Productos</th>
+                                <th>Horario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recorridoOrganizado">
+                            <!-- Los pedidos organizados se mostrarán aquí -->
+                        </tbody>
+                    </table>
+                    <button onclick="guardarRecorrido()" class="save-button">Guardar Recorrido</button>
+                </div>
+            </div>
+
+            <div class="recorridos-guardados">
+                <h3>Recorridos Guardados</h3>
+                <table id="tablaRecorridosGuardados">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Cantidad de Pedidos</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recorridosGuardados">
+                        <!-- Los recorridos guardados se mostrarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../js/scripts.js"></script>
+    <script src="../js/pedidosGuardados.js"></script>
+    <script src="../js/recorridos.js"></script>
+</body>
+
+</html>
